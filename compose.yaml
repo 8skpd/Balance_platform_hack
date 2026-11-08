@@ -1,0 +1,105 @@
+name: balance
+
+x-runtime: &runtime
+  image: balance-local:0.11.0
+  build:
+    context: .
+    target: runtime
+  init: true
+  restart: unless-stopped
+  user: "10001:10001"
+  security_opt:
+    - no-new-privileges:true
+    - seccomp=./docker/seccomp.json
+  cap_drop: [ALL]
+  environment: &environment
+    BALANCE_DATA_DIR: /app/var
+    DATABASE_URL: sqlite:////app/var/app.sqlite3
+    REDIS_URL: redis://redis:6379/0
+    BALANCE_QUEUE: balance
+    OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://192.168.1.76:11434}
+    OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3-server:latest}
+    OLLAMA_TIMEOUT_SECONDS: ${OLLAMA_TIMEOUT_SECONDS:-300}
+    OLLAMA_MAX_TOKENS: ${OLLAMA_MAX_TOKENS:-512}
+    SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-0}
+    RUN_TIMEOUT_SECONDS: ${RUN_TIMEOUT_SECONDS:-3600}
+    RUN_MEMORY_MB: ${RUN_MEMORY_MB:-4096}
+    BALANCE_NORMALIZATION_WORKERS: ${BALANCE_NORMALIZATION_WORKERS:-2}
+  volumes:
+    - run_data:/app/var
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  app:
+    <<: *runtime
+    ports:
+      - "${BALANCE_HTTP_BIND:-127.0.0.1}:${BALANCE_HTTP_PORT:-8080}:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, /app/docker/healthcheck.py, app]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    stop_grace_period: 30s
+
+  worker:
+    <<: *runtime
+    command: [python, -m, celery, -A, "app.queueing:celery", worker, --concurrency, "${BALANCE_WORKER_CONCURRENCY:-2}", --queues, balance, --hostname, "balance@%h", --loglevel, INFO]
+    depends_on:
+      app:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, /app/docker/healthcheck.py, worker]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+    stop_grace_period: 60s
+
+  dispatcher:
+    <<: *runtime
+    command: [python, -m, app.dispatcher]
+    depends_on:
+      app:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, /app/docker/healthcheck.py, dispatcher]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+    stop_grace_period: 15s
+
+  redis:
+    image: redis:7.4-bookworm
+    restart: unless-stopped
+    command: [redis-server, --appendonly, "yes", --maxmemory, 256mb, --maxmemory-policy, noeviction]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  run_data:
+  redis_data:

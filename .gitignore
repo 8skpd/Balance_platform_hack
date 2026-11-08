@@ -1,0 +1,39 @@
+# Local environments and credentials
+.venv/
+.env
+.env.*
+!.env.example
+!.env.docker.example
+
+# Runtime data and generated reports
+var/
+artifacts/
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.duckdb
+*.duckdb.wal
+*.log
+
+# Dependencies, builds and caches
+node_modules/
+frontend/dist/
+frontend/dist-preview/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.tsbuildinfo
+test-results/
+playwright-report/
+
+# Organizer materials, archives and local design references
+*.zip
+*.pdf
+/ХАКАТОН_СИСТЕМА_АНАЛИЗА_ИЗМЕНЕНИЙ/
+/дизайн/
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

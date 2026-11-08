@@ -1,0 +1,29 @@
+.python-workspace{min-width:0;border:1px solid #dfe4e9;border-radius:10px;overflow:hidden;background:#fff;text-align:left}
+.code-toolbar{display:flex;justify-content:space-between;gap:12px;background:#f6f7f8;padding:10px 14px;font-size:12px;color:#7d8794}
+.code-toolbar>span:first-child{font-weight:600;color:#414a56}
+.cm-host .cm-editor{min-height:240px;max-height:450px}
+.cm-host .cm-scroller{min-height:240px}
+.cm-host .cm-gutters{background:#fafafa;border-right:1px solid #edf0f2;color:#9ca3ad}
+.cm-host .cm-content{padding:12px 0}
+.cm-host .cm-line{padding:0 12px}
+.cm-host .cm-focused .cm-selectionBackground,.cm-host .cm-selectionBackground{background:#ffe4d9!important}
+.cm-host .cm-activeLine{background:rgba(100,110,120,.035)}
+.cm-host .cm-activeLineGutter{background:#f8f9fa}
+.cm-host .cm-search{font-size:12px;padding:8px}
+.cm-host .cm-search input{width:auto;max-width:160px;min-height:28px;padding:4px}
+.cm-host .cm-button{padding:3px 8px;min-height:28px}
+.code-validation{padding:9px 14px;border-top:1px solid #edf0f2;font-size:12px;color:#9b5944;white-space:normal}
+.code-validation.valid{color:#4d7a6a}
+.code-diagnostics{padding:0 14px 12px 30px;margin:0;font-size:12px;max-height:170px;overflow:auto}
+.code-diagnostics button{background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer;padding:5px 0;white-space:normal}
+.code-diagnostics .error{color:#c74032}.code-diagnostics .warning{color:#946a2e}
+@media(max-width:600px){.code-toolbar>span:last-child{display:none}.cm-host .cm-editor{max-height:340px}}
+.cm-host .cm-content,.cm-host .cm-line,.cm-host .cm-line *{user-select:text;-webkit-user-select:text}
+.cm-host .cm-content{cursor:text}
+.cm-host .cm-selectionBackground,.cm-host .cm-focused .cm-selectionBackground{background:#ffd1bd!important}
+.code-toolbar-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.code-toolbar-actions .text-button{font-size:12px;padding:0;min-height:24px}
+.code-quick-fix{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:3px 0 10px;color:#414a56}
+.code-quick-fix code{overflow-wrap:anywhere;white-space:pre-wrap}
+.code-diagnostics .code-quick-fix .button{border:1px solid #dfe4e9;border-radius:7px;background:#fff;padding:7px 10px;min-height:32px;color:#414a56}
+@media(max-width:600px){.code-toolbar-actions>span{display:none}}

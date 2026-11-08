@@ -1,0 +1,4 @@
+<dataset>
+  <BEFORE><application application_id="A001"><decisionResult><decision>APPROVE</decision></decisionResult><score>100</score></application></BEFORE>
+  <AFTER><application application_id="A001"><decisionResult><decision>APPROVE</decision></decisionResult><score>120</score></application></AFTER>
+</dataset>

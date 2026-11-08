@@ -1,0 +1,3 @@
+SOURCE,application_id,decisionResult.decision,score
+BEFORE,A001,APPROVE,100
+AFTER,A001,APPROVE,120

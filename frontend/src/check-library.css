@@ -1,0 +1,56 @@
+.check-library-page { min-width:0; }
+.check-library-page > .page-heading { margin:24px 0; }
+.check-library-page .page-heading h1 { font-size:28px; }
+.check-library-workspace { overflow:visible; }
+.check-library-picker { display:flex; align-items:end; gap:24px; padding:22px 24px; border-bottom:1px solid #e8ecef; background:#fafbfc; border-radius:10px 10px 0 0; }
+.check-library-picker .field { flex:1; margin:0; min-width:0; }
+.check-library-picker select { width:100%; }
+.check-library-picker > .checkbox { margin:0; min-height:48px; }
+.check-library-body { padding:24px; }
+.check-library-body .normalization-fieldset { min-width:0; }
+.check-library-body .check-library-name { margin:0 0 22px; }
+.check-library-codebar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:12px; }
+.check-library-codebar h2 { font-size:16px; }
+.check-library-codebar > div { display:flex; gap:20px; }
+.check-library-codebar .text-button { font-size:13px; }
+.check-library-page .cm-host .cm-editor { min-height:380px; max-height:560px; }
+.check-library-page .cm-host .cm-scroller { min-height:380px; }
+.check-library-details { margin:16px 0 0; border:1px solid #e5e9ed; border-radius:9px; }
+.check-library-details > summary { padding:15px 18px; color:#697783; cursor:pointer; font-size:14px; }
+.check-library-detail-body { padding:0 18px 18px; }
+.check-library-detail-body .field { margin:16px 0; }
+.check-library-detail-body textarea { border:1px solid #dfe5e9; border-radius:8px; padding:12px; resize:vertical; width:100%; font-size:14px; }
+.check-library-detail-body p { font-size:13px; color:#7b8791; line-height:1.6; margin:14px 0; }
+.check-library-detail-body code { overflow-wrap:anywhere; font-size:12px; }
+.check-library-detail-body td,.check-library-detail-body th { padding:12px 14px; white-space:normal; font-size:13px; }
+.check-library-detail-body select { width:100%; }
+.check-library-limits { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.check-library-actions { display:flex; align-items:center; flex-wrap:wrap; gap:16px; }
+.check-library-footer { display:flex; align-items:center; justify-content:space-between; gap:16px; border-top:1px solid #e8ecef; padding:18px 24px; background:#fff; border-radius:0 0 10px 10px; position:sticky; bottom:0; z-index:2; }
+.check-library-footer > span { color:#87939d; font-size:12px; }
+.check-library-notice { margin:0 0 16px; color:#4e7b67; font-size:14px; }
+.check-library-archived { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:20px 24px 0; padding:14px 16px; border-radius:8px; background:#faf6ee; color:#8f7345; }
+.check-source { margin:0 20px 16px; border:1px solid #e5e9ed; border-radius:8px; background:#fafbfc; }
+.check-source > summary { padding:13px 16px; cursor:pointer; font-size:13px; color:#74818c; }
+.check-source-body { padding:0 16px 16px; min-width:0; }
+.check-source-body .job-log { margin:12px 0; max-height:400px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.check-source-meta { font-size:12px; color:#8b959f; }
+.check-source-body > details { margin-top:12px; }
+@media(max-width:650px) {
+  .check-library-page > .page-heading { gap:14px; }
+  .check-library-page .page-heading h1 { font-size:24px; }
+  .check-library-picker { padding:16px; gap:12px; flex-wrap:wrap; }
+  .check-library-picker .field { flex-basis:100%; }
+  .check-library-picker > .checkbox { min-height:28px; }
+  .check-library-body { padding:16px; }
+  .check-library-codebar { flex-wrap:wrap; gap:6px; }
+  .check-library-codebar > div { gap:14px; flex-wrap:wrap; }
+  .check-library-page .cm-host .cm-editor { min-height:280px; max-height:420px; }
+  .check-library-page .cm-host .cm-scroller { min-height:280px; }
+  .check-library-limits { grid-template-columns:minmax(0,1fr); gap:0; }
+  .check-library-footer { padding:14px 16px; }
+  .check-library-footer > .button { font-size:13px; padding:10px 12px; white-space:normal; }
+  .check-library-archived { margin:16px 16px 0; flex-wrap:wrap; }
+}
+
+.check-library-codebar .button { min-height:40px; padding:8px 12px; font-size:13px; }

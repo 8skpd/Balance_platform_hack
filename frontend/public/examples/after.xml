@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications>
+  <application application_id="A001">
+    <decisionResult><decision>APPROVE</decision></decisionResult>
+    <score>120</score>
+  </application>
+  <application application_id="A002">
+    <decisionResult><decision>DECLINE</decision></decisionResult>
+    <score>50</score>
+  </application>
+</applications>
